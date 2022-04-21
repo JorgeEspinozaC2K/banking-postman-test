@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "1b42040e-d880-4fe5-8810-a0a3a637b1c6",
+		"name": "Banking Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Config Server Test",
+			"item": [
+				{
+					"name": "banking-customer-service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El estatus de la solicitud es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\": \"object\"\r",
+									"};\r",
+									"\r",
+									"pm.test('El esquema es valido :JSON', function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://teamBootcamp:nttB00tc4mp@localhost:8090/banking-customer-service/default",
+							"protocol": "http",
+							"auth": {
+								"user": "teamBootcamp",
+								"password": "nttB00tc4mp"
+							},
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"banking-customer-service",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "banking-discovery-server",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El estatus de la solicitud es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\": \"object\"\r",
+									"};\r",
+									"\r",
+									"pm.test('El esquema es valido :JSON', function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://teamBootcamp:nttB00tc4mp@localhost:8090/banking-discovery-server/default",
+							"protocol": "http",
+							"auth": {
+								"user": "teamBootcamp",
+								"password": "nttB00tc4mp"
+							},
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"banking-discovery-server",
+								"default"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer Service Test",
+			"item": [
+				{
+					"name": "List all customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find customer by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customer/625c891e3194b30c16e72dd0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"625c891e3194b30c16e72dd0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find customer by personal identifier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customer/pid/75904534",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"pid",
+								"75904534"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Damian\",\r\n    \"lastName\": \"Dare\",\r\n    \"personalIdentifier\": 82923342,\r\n    \"birthDate\":\"2000-05-12\",\r\n    \"email\": \"damian.dare1@gmail.com\",\r\n    \"isTributary\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/customer/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6261c91673241e1b3c16779e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/customer/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find customer By personal id or Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customer/ipid/6261c97c73241e1b3c16779f",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"ipid",
+								"6261c97c73241e1b3c16779f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account Service Test",
+			"item": [
+				{
+					"name": "List all accounts",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Credit Service Test",
+			"item": [
+				{
+					"name": "Find by customer id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customer/223232e",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer",
+								"223232e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Credits if they are linked to cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/credit/ifc/true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"credit",
+								"ifc",
+								"true"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find all Credits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/credit",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"credit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/credit/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"credit",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new credit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/credit/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"credit",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Card Service Test",
+			"item": [
+				{
+					"name": "Find all cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/card",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find card by customer id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/card/sdb7bbse7f7hs8efh487hfs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card",
+								"sdb7bbse7f7hs8efh487hfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by card number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/card/cn/345654345678765",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card",
+								"cn",
+								"345654345678765"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete card",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/card/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deposit Service Test",
+			"item": [
+				{
+					"name": "List all deposit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/deposit",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Witdrawal Sevice Test",
+			"item": [
+				{
+					"name": "List all witdrawal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/witdrawal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"witdrawal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction Service Test",
+			"item": [
+				{
+					"name": "Find all transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Service Test",
+			"item": [
+				{
+					"name": "Find all payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/payment",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Payment by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/payment/ehfh63fh37fh8f3g73",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"ehfh63fh37fh8f3g73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find payment by credit id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/payment/cid/gf4972fh3h249gj2983jg",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"cid",
+								"gf4972fh3h249gj2983jg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save new payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/payment/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/payment/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
